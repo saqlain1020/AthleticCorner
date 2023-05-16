@@ -33,14 +33,18 @@ admin.initializeApp({
   }),
 });
 
-const message = {
-  data: "asd",
-  token:
-    "ctG4Hh1-urPnunsBtcSeli:APA91bGUKY851nZ5hWmsQP68QKHj93EkyIrUL2pcxFtdQhOgUxr43Q97OC2GXsLVhfCQMnMOsr6NOWHH7d3Eh5Tl8zbS7sO_nlbESQZiqMqzStUB7s3LT8IW461jGBJm3shKuOf0tZFx",
-};
 admin.messaging().send({
-  webpush: { notification: { title: "asd", body: "asd" } },
-  token: message.token,
+  webpush: {
+    notification: {
+      title: "Atheletic Corner Shoes",
+      body: "Hellow",
+    },
+    fcmOptions: {
+      link: "/data",
+    },
+  },
+  token:
+    "dWeQ13M2NEkGiVycQGt8yk:APA91bFdcNmbYswzvsYZD5GI39-1wI2F-7OfsSyWWbsZ1b4AHONj_0VkP1iOinj36hkFngOE4qjtU9eL1o5ASBDicaO4hZpBwNjh4bm-bmY2ahE2d1XeoE7vzeP_4P80k5LV95avLnn5",
 });
 
 const PORT = process.env.PORT || 8080;
@@ -60,6 +64,14 @@ http
         if (err) throw err;
 
         response.writeHeader(200, { "Content-Type": "application/javascript" });
+        response.write(html);
+        response.end();
+      });
+    } else if (request.url === "/data") {
+      fs.readFile("./data.html", function (err, html) {
+        if (err) throw err;
+
+        response.writeHeader(200, { "Content-Type": "text/html" });
         response.write(html);
         response.end();
       });
@@ -147,6 +159,13 @@ async function fetchAllProducts() {
 }
 
 async function sendSms(msg) {
+  fs.writeFileSync("data.html", msg);
+  admin.messaging().send({
+    webpush: { notification: { title: "Atheletic Corner Shoes", body: msg } },
+    token:
+      "dWeQ13M2NEkGiVycQGt8yk:APA91bFdcNmbYswzvsYZD5GI39-1wI2F-7OfsSyWWbsZ1b4AHONj_0VkP1iOinj36hkFngOE4qjtU9eL1o5ASBDicaO4hZpBwNjh4bm-bmY2ahE2d1XeoE7vzeP_4P80k5LV95avLnn5",
+  });
+
   const authHeader =
     "Basic " +
     Buffer.from("saqlain@dechains.com:496#B@&AkyaUPWG").toString("base64");
