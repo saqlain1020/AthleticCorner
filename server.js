@@ -151,7 +151,9 @@ async function fetchAllProducts() {
   });
   oldProducts = products;
   if (newProds.length > 0)
-    await sendSms(newProds.map((p) => p.link).toString());
+    await sendSms(
+      newProds.map((p, i) => `<a href="${p.link}">link${i}</a><br/>`)
+    );
   console.log(newProds);
   return products;
 }
