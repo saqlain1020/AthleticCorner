@@ -3,9 +3,23 @@
   "packageManager": "yarn@3.4.1",
   "dependencies": {
     "axios": "^1.4.0",
-    "cheerio": "^1.0.0-rc.12"
+    "cheerio": "^1.0.0-rc.12",
+    "firebase": "^9.22.0",
+    "firebase-admin": "^11.8.0"
   },
   "scripts": {
     "start": "node server.js"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
