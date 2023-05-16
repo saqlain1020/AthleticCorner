@@ -10,6 +10,49 @@
 
 <body>
     Hello
+    <button id="btn">Ask permission</button>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import * as msg from "https://www.gstatic.com/firebasejs/9.22.0/firebase-messaging.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCXIxdFez2RIdUBYRZbRyDVZ5Db4isGNj0",
+            authDomain: "wallet-tracker-js-ce5d2.firebaseapp.com",
+            databaseURL: "https://wallet-tracker-js-ce5d2.firebaseio.com",
+            projectId: "wallet-tracker-js-ce5d2",
+            storageBucket: "wallet-tracker-js-ce5d2.appspot.com",
+            messagingSenderId: "713905702729",
+            appId: "1:713905702729:web:8cdaecfc0dc26679b63c98"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        console.log(app)
+        console.log(msg)
+
+        const askForPermissioToReceiveNotifications = async () => {
+            try {
+                const messaging = msg.getMessaging();
+                console.log(messaging)
+
+                // await messaging.requestPermission();
+                const token = await msg.getToken();
+                console.log("token :", token);
+
+                return token;
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        document.querySelector("#btn").addEventListener("click", askForPermissioToReceiveNotifications)
+
+
+    </script>
 </body>
 
 </html>
