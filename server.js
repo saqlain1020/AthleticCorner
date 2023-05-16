@@ -67,7 +67,7 @@ http
         response.write(html);
         response.end();
       });
-    } else if (request.url === "/data") {
+    } else if (request.url === "./data.html") {
       fs.readFile("./data.html", function (err, html) {
         if (err) throw err;
 
@@ -167,7 +167,7 @@ async function sendSms(msg) {
         body: "Click to view new products",
       },
       fcmOptions: {
-        link: "/data",
+        link: "/data.html",
       },
     },
     token:
