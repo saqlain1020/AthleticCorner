@@ -19,7 +19,7 @@ http
       fs.readFile("./firebase-messaging-sw.js", function (err, html) {
         if (err) throw err;
 
-        response.writeHeader(200, { "Content-Type": "text/html" });
+        response.writeHeader(200, { "Content-Type": "application/javascript" });
         response.write(html);
         response.end();
       });

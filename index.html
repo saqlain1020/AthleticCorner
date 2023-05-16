@@ -41,15 +41,15 @@
                 const permission = await Notification.requestPermission()
                 const token = await msg.getToken(messaging, { vapidKey: "BPeL2sT7Vn19sBXc6nxGi0KFRQcwUPu2hVNIMj7mRcJxDuWvLtsog4fd91cxudhY6FQ5m1zkd_ol1pscgSNBwQA" });
                 console.log("token :", token);
-                navigator.serviceWorker.register('/firebase-messaging-sw.js')
-                    .then(function (registration) {
-                        // Registration was successful
-                        console.log('firebase-message-sw :ServiceWorker registration successful with scope: ', registration.scope);
-                        messaging.useServiceWorker(registration);
-                    }, function (err) {
-                        // registration failed :(
-                        console.log('firebase-message-sw: ServiceWorker registration failed: ', err);
-                    });
+                // navigator.serviceWorker.register('/firebase-messaging-sw.js')
+                //     .then(function (registration) {
+                //         // Registration was successful
+                //         console.log('firebase-message-sw :ServiceWorker registration successful with scope: ', registration.scope);
+                //         messaging.useServiceWorker(registration);
+                //     }, function (err) {
+                //         // registration failed :(
+                //         console.log('firebase-message-sw: ServiceWorker registration failed: ', err);
+                //     });
 
 
                 return token;
