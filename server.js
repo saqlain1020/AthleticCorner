@@ -174,26 +174,26 @@ async function sendSms(msg) {
       "dWeQ13M2NEkGiVycQGt8yk:APA91bFdcNmbYswzvsYZD5GI39-1wI2F-7OfsSyWWbsZ1b4AHONj_0VkP1iOinj36hkFngOE4qjtU9eL1o5ASBDicaO4hZpBwNjh4bm-bmY2ahE2d1XeoE7vzeP_4P80k5LV95avLnn5",
   });
 
-  const authHeader =
-    "Basic " +
-    Buffer.from("saqlain@dechains.com:496#B@&AkyaUPWG").toString("base64");
-  const res = await axios.post(
-    "https://rest.clicksend.com/v3/sms/send",
-    {
-      messages: [
-        {
-          from: "Saqlain",
-          body: msg,
-          to: "+923000580479",
-        },
-      ],
-    },
-    {
-      headers: {
-        Authorization: authHeader,
-      },
-    }
-  );
+  // const authHeader =
+  //   "Basic " +
+  //   Buffer.from("saqlain@dechains.com:496#B@&AkyaUPWG").toString("base64");
+  // const res = await axios.post(
+  //   "https://rest.clicksend.com/v3/sms/send",
+  //   {
+  //     messages: [
+  //       {
+  //         from: "Saqlain",
+  //         body: msg,
+  //         to: "+923000580479",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     headers: {
+  //       Authorization: authHeader,
+  //     },
+  //   }
+  // );
 }
 
 fetchAllProducts();
