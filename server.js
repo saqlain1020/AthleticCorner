@@ -33,19 +33,19 @@ admin.initializeApp({
   }),
 });
 
-admin.messaging().send({
-  webpush: {
-    notification: {
-      title: "Atheletic Corner Shoes",
-      body: "Hellow",
-    },
-    fcmOptions: {
-      link: "/data",
-    },
-  },
-  token:
-    "dWeQ13M2NEkGiVycQGt8yk:APA91bFdcNmbYswzvsYZD5GI39-1wI2F-7OfsSyWWbsZ1b4AHONj_0VkP1iOinj36hkFngOE4qjtU9eL1o5ASBDicaO4hZpBwNjh4bm-bmY2ahE2d1XeoE7vzeP_4P80k5LV95avLnn5",
-});
+// admin.messaging().send({
+//   webpush: {
+//     notification: {
+//       title: "Atheletic Corner Shoes",
+//       body: "Hellow",
+//     },
+//     fcmOptions: {
+//       link: "/data",
+//     },
+//   },
+//   token:
+//     "dWeQ13M2NEkGiVycQGt8yk:APA91bFdcNmbYswzvsYZD5GI39-1wI2F-7OfsSyWWbsZ1b4AHONj_0VkP1iOinj36hkFngOE4qjtU9eL1o5ASBDicaO4hZpBwNjh4bm-bmY2ahE2d1XeoE7vzeP_4P80k5LV95avLnn5",
+// });
 
 const PORT = process.env.PORT || 8080;
 
@@ -159,7 +159,7 @@ async function fetchAllProducts() {
 }
 
 async function sendSms(msg) {
-  fs.writeFileSync("data.html", msg);
+  fs.writeFileSync("/data.html", msg);
   admin.messaging().send({
     webpush: {
       notification: {
