@@ -5,16 +5,27 @@ const fs = require("fs");
 
 const PORT = process.env.PORT || 8080;
 
-fs.readFile("./index.html", function (err, html) {
-  if (err) throw err;
-  http
-    .createServer(function (request, response) {
-      response.writeHeader(200, { "Content-Type": "text/html" });
-      response.write(html);
-      response.end();
-    })
-    .listen(PORT);
-});
+http
+  .createServer(function (request, response) {
+    if (request.url === "/") {
+      fs.readFile("./index.html", function (err, html) {
+        if (err) throw err;
+
+        response.writeHeader(200, { "Content-Type": "text/html" });
+        response.write(html);
+        response.end();
+      });
+    } else if (request.url === "/firebase-messaging-sw.js") {
+      fs.readFile("./firebase-messaging-sw.js", function (err, html) {
+        if (err) throw err;
+
+        response.writeHeader(200, { "Content-Type": "text/html" });
+        response.write(html);
+        response.end();
+      });
+    }
+  })
+  .listen(PORT);
 
 const url = "https://www.athleticorner.com/collections/football-shoes";
 let oldProducts = [];
